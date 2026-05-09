@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+:root {
+  --background: #070A12;
+  --foreground: #EAF0FF;
+  --muted: rgba(234, 240, 255, 0.72);
+  --card: rgba(255, 255, 255, 0.07);
+  --card-border: rgba(255, 255, 255, 0.14);
+  --shadow: 0 18px 65px rgba(0, 0, 0, 0.45);
+  --ring: rgba(130, 182, 255, 0.45);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+    monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #070A12;
+    --foreground: #EAF0FF;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+@layer base {
+  * {
+    @apply outline-none;
+  }
+
+  :focus-visible {
+    box-shadow: 0 0 0 4px var(--ring);
+    border-radius: 10px;
+  }
+
+  ::selection {
+    background: rgba(130, 182, 255, 0.25);
+  }
+}
+
+@layer utilities {
+  .bg-fintech {
+    background:
+      radial-gradient(900px 550px at 15% 15%, rgba(98, 160, 255, 0.32), transparent 60%),
+      radial-gradient(900px 550px at 85% 10%, rgba(197, 120, 255, 0.28), transparent 55%),
+      radial-gradient(900px 550px at 70% 85%, rgba(82, 240, 214, 0.18), transparent 60%),
+      linear-gradient(180deg, #070A12, #070A12 65%, #050611);
+  }
+
+  .glass {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(16px);
+  }
+
+  .subtle-ring {
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  }
+}
